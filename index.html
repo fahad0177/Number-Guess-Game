@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Number Guess Game</title>
+</head>
+<body>
+	<style>
+		@import url('https://fonts.googleapis.com/css?family=Poppins:600,400');
+		body{
+			margin: 0;
+			padding: 0;
+			font-family: 'Poppins', sans-serif;
+			font-size: 22px;
+			background: #8E2DE2;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #4A00E0, #8E2DE2);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #4A00E0, #8E2DE2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+text-align: center;
+padding: 150px 0;
+}
+		input[type="text"]{
+			padding: 10px;
+		}
+		input[type="button"]{
+			padding: 10px 25px;
+			border: none;
+			background: tomato;
+			color: #fff;
+			font-family: 'Poppins', sans-serif;
+			font-size: 18px;
+			margin-top: 15px;
+		}
+		.main {
+			display: inline-block;
+			
+		}
+		#output {
+			color: #fff; 
+			margin-top: 15xp;
+		}
+		h1, h2, h3, h4, h5, h6, p {
+			margin: 0;
+		}
+		h1{
+			color: #fff;
+		}
+		h4 {
+			color: #f8f8f8;
+		}
+		p {
+			color: #f4f4f4;
+			font-size: 14px;
+		}
+	</style>
+		<div class="main">
+			<h1>Number Guess Game</h1>
+			<h4>Game Rules:</h4>
+			<p>
+				Input your guess numbers. Hit the "check it" button for the result.<br>
+				If it shows "L", it means your guess number is higher than the main number.<br>
+				- Please enter new number for exact input filed.<br>
+				If it shows "H", it means your guess number is lower than the main number.<br>
+				- Please enter new number for exact input filed.<br>
+				If it shows a solid number, your guess number is right.<br>
+				- Don't enter new number for the exact filed.<br>
+				If you guess all of those numbers correctly, you will have a message.<br>
+				Note: When you refresh your browser, It will generate new number.
+			</p>
+			Num-1: <input type="text" id="num1">
+			Num-2: <input type="text" id="num2">
+			Num-3: <input type="text" id="num3">
+			<input type="button" onclick="crack()" value="Check it">
+			<h2 id="output"></h2>
+		</div>
+	<script>
+		var output = document.getElementById("output");
+		var n1 = document.getElementById("num1");
+		var n2 = document.getElementById("num2");
+		var n3 = document.getElementById("num3");
+		
+		var cNum = [];
+		var count = 0;
+		
+		for(var x=0; x<3; x++){
+			cNum.push(Math.floor(Math.random()*9));
+		}
+		
+		
+		function crack(){
+			count=0;
+			var guess = [n1.value, n2.value, n3.value];
+			for(var x=0; x<cNum.length; x++){
+				output.innerHTML += checkNum(guess[x],cNum[x]) + " , ";
+			}
+			if (count == 3){
+				output.innerHTML += "You win the game";
+			}else{
+				output.innerHTML += "<br>";
+			}
+		}
+		
+		function checkNum(a,b){
+			if(a<b){return "H";}
+			if(a>b){return "L";}
+			if(a==b){
+				count++;
+				return a;
+			}
+		}
+	</script>
+</body>
+</html>
