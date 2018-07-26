@@ -10,3 +10,4 @@
 	If you guess all of those numbers correctly, you will have a message.<br>
 	Note: When you refresh your browser, It will generate new number.
 </p>
+<a href="https://codepen.io/Fahad-webiconbd/pen/ejEXJw" style="color: tomato; font-size: 18px; font-weihgt: 700;">View on Codepen</a>
